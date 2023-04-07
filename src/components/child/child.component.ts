@@ -1,5 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  ContentChild,
+  DoCheck,
+  ElementRef,
+  OnChanges,
+  OnInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -7,7 +18,16 @@ import { ChangeDetectorRef, Component } from '@angular/core';
   imports: [CommonModule],
   standalone: true,
 })
-export class ChildComponent {
+export class ChildComponent
+  implements
+    OnChanges,
+    OnInit,
+    DoCheck,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewChecked
+{
+  @ContentChild('contentRef') compref: ElementRef;
   /**
    * Class Constructor
    *  - always calls once on component load and first in lifecycle
@@ -40,6 +60,31 @@ export class ChildComponent {
    */
 
   ngOnInit(): void {
-    console.log('child on inint called');
+    console.log('child on inint called', this.compref);
+  }
+
+  /**
+   * Called immediately after ngOnChanges() on every change detection run,
+   * and immediately after ngOnInit() on the first run.
+   *
+   * and on every change event in the do this will trigger
+   */
+  ngDoCheck(): void {
+    console.log('do check called');
+  }
+
+  /**
+   * Called once after the first ngDoCheck().
+   */
+  ngAfterContentInit() {
+    console.log('after content init called', this.compref);
+  }
+
+  ngAfterContentChecked() {
+    console.log('after content init called', this.compref);
+  }
+
+  ngAfterViewChecked() {
+    console.log('after view checked called', this.compref);
   }
 }

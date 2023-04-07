@@ -42,4 +42,21 @@ export class ParentComponent {
   ngOnInit(): void {
     console.log('parent on inint called');
   }
+
+   /**
+   * Called immediately after ngOnChanges() on every change detection run,
+   * and immediately after ngOnInit() on the first run.
+   *
+   * and on every change event in the do this will trigger
+   */
+    ngDoCheck(): void {
+      console.log('do check called');
+    }
+  
+    /**
+     * Called once after the first ngDoCheck().
+     */
+    ngAfterContentInit() {
+      console.log('after content init called');
+    }
 }

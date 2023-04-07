@@ -9,7 +9,6 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BgDirective } from '../directives/bg.directive';
 
 /**
  * Class: SampleComponents
@@ -19,7 +18,7 @@ import { BgDirective } from '../directives/bg.directive';
   selector: 'app-sample',
   templateUrl: './sample.component.html',
   styles: [],
-  imports: [CommonModule, FormsModule, BgDirective],
+  imports: [CommonModule, FormsModule],
   standalone: true,
 })
 export class SampleComponents

@@ -11,7 +11,7 @@ import { ParentComponent } from './components/parent/parent.component';
   standalone: true,
   imports: [CommonModule, SampleComponents, ChildComponent, ParentComponent],
   template: `
-    <app-parent  *ngIf="isChild"></app-parent>
+    <app-parent></app-parent>
     <app-child *ngIf="isChild"></app-child>
     <button (click)='toggleChild()'>Click Me</button>
   `,
